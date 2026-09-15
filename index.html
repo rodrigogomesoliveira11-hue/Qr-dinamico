@@ -5,8 +5,21 @@
     <title>QR Dinâmico</title>
 </head>
 <body>
-    <script>
-        window.location.href = "https://www.google.com/";
-    </script>
+
+<script>
+const clientes = {
+    "Cliente001": "https://www.google.com/"
+};
+
+const parametros = new URLSearchParams(window.location.search);
+const cliente = parametros.get("cliente");
+
+if (clientes[cliente]) {
+    window.location.href = clientes[cliente];
+} else {
+    document.body.innerHTML = "<h1>Cliente não encontrado</h1>";
+}
+</script>
+
 </body>
 </html>
