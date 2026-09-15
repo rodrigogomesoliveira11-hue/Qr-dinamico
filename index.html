@@ -5,19 +5,11 @@
     <title>QR Dinâmico</title>
 </head>
 <body>
+
 <script>
-const clientes = {
-    "Cliente001": "https://www.google.com/"
-};
-
-const caminho = window.location.pathname;
-const codigo = caminho.split("/").filter(Boolean).pop();
-
-if (clientes[codigo]) {
-    window.location.href = clientes[codigo];
-} else {
-    document.body.innerHTML = "<h1>Cliente não encontrado</h1>";
-}
+const url = "https://www.google.com/";
+window.location.href = url;
 </script>
+
 </body>
 </html>
