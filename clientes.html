@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar QR Codes</title>
+</head>
+<body>
+
+<h2>Gerenciar QR Codes</h2>
+
+<label>Código do cliente:</label><br>
+<input id="codigo" placeholder="Cliente001"><br><br>
+
+<label>Link do Google:</label><br>
+<input id="link" placeholder="Cole o link aqui" style="width:90%"><br><br>
+
+<button onclick="gerar()">Gerar endereço do QR</button>
+
+<p id="resultado"></p>
+
+<script>
+function gerar() {
+    const codigo = document.getElementById("codigo").value;
+    const link = document.getElementById("link").value;
+
+    if (!codigo || !link) {
+        alert("Preencha os dois campos.");
+        return;
+    }
+
+    const endereco =
+        "https://rodrigogomesoliveira11-hue.github.io/Qr-dinamico/?cliente="
+        + encodeURIComponent(codigo);
+
+    document.getElementById("resultado").innerHTML =
+        "Endereço do QR:<br><br><strong>" + endereco + "</strong>";
+}
+</script>
+
+</body>
+</html>
