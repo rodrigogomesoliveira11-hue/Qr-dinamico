@@ -11,13 +11,15 @@ const clientes = {
     "Cliente001": "https://www.google.com/"
 };
 
-const parametros = new URLSearchParams(window.location.search);
-const cliente = parametros.get("cliente");
+const cliente = new URLSearchParams(window.location.search).get("cliente");
 
-if (clientes[cliente]) {
-    window.location.href = clientes[cliente];
+if (cliente && clientes[cliente]) {
+    window.location.replace(clientes[cliente]);
 } else {
-    document.body.innerHTML = "<h1>Cliente não encontrado</h1>";
+    document.body.innerHTML = `
+        <h2>QR Dinâmico</h2>
+        <p>Cliente não encontrado.</p>
+    `;
 }
 </script>
 
