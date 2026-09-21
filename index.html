@@ -6,20 +6,26 @@
 </head>
 <body>
 
-<script>
-const clientes = {
-    "Cliente001": "https://www.google.com/"
-};
+<p>Redirecionando...</p>
 
+<script>
 const cliente = new URLSearchParams(window.location.search).get("cliente");
 
-if (cliente && clientes[cliente]) {
-    window.location.replace(clientes[cliente]);
+if (!cliente) {
+    document.body.innerHTML = "<h2>Cliente não informado.</h2>";
 } else {
-    document.body.innerHTML = `
-        <h2>QR Dinâmico</h2>
-        <p>Cliente não encontrado.</p>
-    `;
+
+    const appScript = "https://script.google.com/macros/s/AKfycbxm6ja3RCzHma5aHPf6QAqU2cJdLIKsd88bhe0Xo9Gg58vCY5r3sTJUTFOJpfslm3NOgA/exec?cliente=" 
+        + encodeURIComponent(cliente);
+
+    fetch(appScript)
+        .then(response => response.text())
+        .then(link => {
+            window.location.href = link.trim();
+        })
+        .catch(() => {
+            document.body.innerHTML = "<h2>Erro ao encontrar o cliente.</h2>";
+        });
 }
 </script>
 
