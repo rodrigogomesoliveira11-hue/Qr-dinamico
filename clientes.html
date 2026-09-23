@@ -1,23 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Gerador de QR Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliveira Design & Tecnologia</title>
+
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #f4f5f7;
+            color: #222;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111;
+        }
+
+        .subtitulo {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        input:focus {
+            border-color: #111;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #111;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        #qrcode {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .rodape {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
 </head>
+
 <body>
 
-<h2>Gerar QR Code</h2>
+<div class="container">
 
-<input id="cliente" placeholder="Ex: Cliente001">
+    <div class="logo">
+        Oliveira Design & Tecnologia
+    </div>
 
-<button onclick="gerarQR()">Gerar QR Code</button>
+    <div class="subtitulo">
+        Gerador de QR Code Dinâmico
+    </div>
 
-<div id="qrcode"></div>
+    <label for="cliente">Código do cliente</label>
+
+    <input
+        id="cliente"
+        type="text"
+        placeholder="Ex: Cliente001"
+    >
+
+    <button onclick="gerarQR()">
+        Gerar QR Code
+    </button>
+
+    <div id="qrcode"></div>
+
+    <div class="rodape">
+        Sistema desenvolvido por Oliveira Design & Tecnologia
+    </div>
+
+</div>
 
 <script>
+
 function gerarQR() {
-    const cliente = document.getElementById("cliente").value.trim();
+
+    const cliente = document
+        .getElementById("cliente")
+        .value
+        .trim();
 
     if (!cliente) {
         alert("Digite o código do cliente.");
@@ -26,7 +147,8 @@ function gerarQR() {
 
     document.getElementById("qrcode").innerHTML = "";
 
-    const link = "https://rodrigogomesoliveira11-hue.github.io/Qr-dinamico/?cliente="
+    const link =
+        "https://rodrigogomesoliveira11-hue.github.io/Qr-dinamico/?cliente="
         + encodeURIComponent(cliente);
 
     new QRCode(document.getElementById("qrcode"), {
@@ -35,6 +157,7 @@ function gerarQR() {
         height: 300
     });
 }
+
 </script>
 
 </body>
